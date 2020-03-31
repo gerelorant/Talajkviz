@@ -167,7 +167,7 @@ msgstr "%(num)s. kérdés"
 #: templates/answers.html:52
 #, python-format
 msgid "%(points)s points"
-msgstr "pont"
+msgstr "%(points)s pont"
 
 #: templates/answers.html:54
 msgid "Correct"
