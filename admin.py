@@ -94,10 +94,11 @@ class IndexView(AdminIndexView):
             return abort(404)
 
         questions = fill.available_questions
-        if len(questions) == block.questions.count():
-            finish = True
-        else:
-            finish = False
+        finish = True
+        for question in questions:
+            if question.answers.filter_by(quiz_id=fill.id).first() is None:
+                finish = False
+                break
 
         return self.render("pager.html", questions=questions,
                            finish=finish, active=active)
