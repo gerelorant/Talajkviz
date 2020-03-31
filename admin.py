@@ -23,6 +23,8 @@ class IndexView(AdminIndexView):
         per_page = current_app.config.get('PER_PAGE', 20)
         quizzes = model.Quiz.query\
             .order_by(model.Quiz.start_time_utc.desc())\
+            .order_by(model.Quiz.id.desc())\
+            .filter_by(public=True)\
             .paginate(page, per_page, error_out=False)
 
         return self.render('index.html', quizzes=quizzes)
@@ -337,6 +339,11 @@ class QuizView(ModelView):
     create_template = "create.html"
     edit_template = "edit.html"
 
+    roles = ['editor']
+    create_roles = roles
+    edit_roles = roles
+    delete_roles = roles
+
     def get_query(self):
         if current_user.has_role('admin'):
             return super().get_query()
@@ -352,6 +359,10 @@ class QuizView(ModelView):
             .filter_by(host_id=current_user.id)
 
     def create_form(self, obj=None):
+        t = type(request.form)
+        form = dict(request.form)
+        form['_continue_editing'] = True
+        request.form = t(form)
         return QuizEditorForm(obj)
 
     def edit_form(self, obj=None):
@@ -363,9 +374,7 @@ class QuizView(ModelView):
 
 @add_view(_l('Filled Quizzes'), _l('Check'), model.FilledQuiz)
 class FilledQuizView(ModelView):
-    can_create = False
-    can_edit = False
-    can_delete = False
+    roles = ['editor']
 
     columns = {
         'user': _l('User'),
@@ -381,9 +390,7 @@ class FilledQuizView(ModelView):
 
 @add_view(_l('Answers'), _l('Check'), model.Answer)
 class AnswerView(ModelView):
-    can_create = False
-    can_edit = False
-    can_delete = False
+    roles = ['editor']
 
     columns = {
         'question': _l('Question'),
@@ -395,3 +402,27 @@ class AnswerView(ModelView):
     def _column_filters(self):
         # noinspection PyTypeChecker
         return [query_filter(model.FilledQuiz)]
+
+
+@add_view(_l('Users'), _l('Admin'), model.User)
+class UserView(ModelView):
+    columns = {
+        'username': _l('Username'),
+        'email': _l('E-mail'),
+        'language': _l('Language'),
+        'roles': _l('Roles')
+    }
+    form_columns = ['username', 'email', 'password_str', 'language', 'roles']
+    form_extra_fields = {
+        'password_str': wtf.PasswordField(_l('Password'))
+    }
+
+    def is_accessible(self) -> bool:
+        if current_user.is_authenticated:
+            return current_user.has_role('admin')
+
+    @property
+    def _column_filters(self):
+        # noinspection PyTypeChecker
+        return [query_filter(model.User)]
+

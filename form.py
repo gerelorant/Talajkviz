@@ -162,8 +162,10 @@ class QuizEditorForm(EditorForm):
     start_time = DateTimeField(
         _l('Start Time'),
         validators=[wtf.validators.Optional()])
+    public = wtf.BooleanField(
+        _l('Public'),
+        validators=[wtf.validators.Optional()])
     submit = wtf.SubmitField(_l('Save'), render_kw={'class_':'btn btn-success'})
-    delete = wtf.SubmitField(_l('Remove'), render_kw={'class_':'btn btn-danger'})
 
     def __init__(self, quiz: model.Quiz = None, *args, **kwargs):
         if quiz is None:

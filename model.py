@@ -156,6 +156,16 @@ class User(db.Model, UserMixin):
                 setattr(self, k, v)
 
     @property
+    def password_str(self):
+        return None
+
+    @password_str.setter
+    def password_str(self, value: str):
+        if value:
+            self.password = hash_password(value)
+
+
+    @property
     def is_active(self) -> bool:
         return True
 
@@ -230,6 +240,7 @@ class User(db.Model, UserMixin):
 class Quiz(db.Model):
     name = name_column()
     start_time_utc = db.Column(db.DateTime, index=True)
+    public = db.Column(db.Boolean, default=False)
 
     host_id = db.Column(
         db.Integer,
