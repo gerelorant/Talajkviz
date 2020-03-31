@@ -1,0 +1,31 @@
+{% extends 'admin/base.html' %}
+
+{% block head %}
+    {{ super() }}
+    <link href="{{ url_for('static', filename='css/theme.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='bootstrap3-wysiwyg/bootstrap3-wysihtml5.min.css') }}" rel="stylesheet">
+{% endblock %}
+
+{% block page_body %}
+    <div class="container{%if config.get('FLASK_ADMIN_FLUID_LAYOUT', False) %}-fluid{% endif %}">
+    {% block navbar %}
+      {% include "navbar.html" %}
+    {% endblock %}
+
+      {% block messages %}
+      {{ layout.messages() }}
+      {% endblock %}
+
+      {# store the jinja2 context for form_rules rendering logic #}
+      {% set render_ctx = h.resolve_ctx() %}
+
+      {% block body %}{% endblock %}
+    </div>
+{% endblock %}
+
+
+{% block tail %}
+    {{ super() }}
+    <script src="{{ url_for('static', filename='bootstrap3-wysiwyg/bootstrap3-wysihtml5.all.min.js') }}"></script>
+{% endblock %}

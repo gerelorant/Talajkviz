@@ -1,0 +1,15 @@
+{% from 'bootstrap/wtf.html' import quick_form, form_field, form_errors %}
+
+<div id="form-modal" class="modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">{{ _('Edit') }}</h4>
+      </div>
+      <div class="modal-body" style="padding-bottom: 45px;">
+        {{ quick_form(form, action=url_for('admin.form', **request.args), button_map={'submit': 'success pull-right'}) }}
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

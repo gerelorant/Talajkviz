@@ -1,0 +1,109 @@
+{% extends 'admin/model/create.html' %}
+{% from 'bootstrap/wtf.html' import quick_form, form_field, form_errors %}
+
+{% block create_form %}
+    {% set quiz = form.model %}<div class="row editor-header">
+        <div class="col-md-12">
+            <h2>{{ _('Edit Quiz') }}</h2>
+        </div>
+    </div>
+    {{ quick_form(form, form_type='horizontal') }}
+    {% for block in quiz.blocks %}
+        <div class="well row block-well">
+            <div class="row editor-header">
+                <div class="col-md-9 col-md-offset-1">
+                    <h3>{{ block.order_number }}. {{ block.name }}</h3>
+                </div>
+                <div class="col-md-2 text-right">
+                    <button class="btn btn-primary" title="{{ _('Edit Block') }}" onclick="getModal({{ {'form_type': 'block', 'block_id': block.id} }})">
+                        <span class="glyphicon glyphicon-pencil"></span>
+                        {{ _('Edit Block') }}
+                    </button>
+                </div>
+            </div>
+        {% for question in block.questions %}
+            <div class="well col-md-offset-1 col-md-10 row question-well">
+                <div class="row editor-header">
+                    <div class="col-md-10">
+                        <h4>{{ _('Question %(num)s', num=question.order_number) }}</h4>
+                    </div>
+                    <div class="col-md-2 text-right">
+                        <button class="btn btn-primary" title="{{ _('Edit Question') }}" onclick="getModal({{ {'form_type': 'question', 'question_id': question.id} }})">
+                            <span class="glyphicon glyphicon-pencil"></span>
+                            {{ _('Edit Question') }}
+                        </button>
+                    </div>
+                </div>
+                {% set content = question.content %}
+                {% if '<script>' in content %}
+                    <p class="form-description">{{ content }}</p>
+                {% else %}
+                    <p class="form-description">{{ content|safe }}</p>
+                {% endif %}
+
+                <table class="table text-center">
+                    <tr><th style="width:100%;text-align: center">{{ _('Answer') }}</th><th>{{ _('Flexibility') }}</th><th>{{ _('Points') }}</th><th>{{ _('Edit') }}</th></tr>
+                {% for choice in question.choices %}
+                    <tr><td>{{ choice.value }}</td><td>{{ choice.max_levenshtein_distance }}</td><td>{{ choice.points }}</td><td>
+                        <button class="btn btn-primary" title="{{ _('Edit Answer') }}" onclick="getModal({{ {'form_type': 'choice', 'choice_id': choice.id} }})">
+                            <span class="glyphicon glyphicon-pencil"></span>
+                        </button></td>
+                    </tr>
+                {% endfor %}
+
+                </table>
+
+
+                <div class="col-sm-12 text-right">
+                    <button class="btn btn-success" title="{{ _('Add Answer') }}" onclick="getModal({{ {'form_type': 'choice', 'question_id': question.id} }})">
+                        <span class="glyphicon glyphicon-plus"></span>
+                        {{ _('Add Answer') }}
+                    </button>
+                    <button class="btn btn-danger" title="{{ _('Remove Question') }}">
+                        <span class="glyphicon glyphicon-trash"></span>
+                        {{ _('Remove Question') }}
+                    </button>
+                </div>
+            </div>
+        {% endfor %}
+            <div class="col-sm-12 text-right">
+                <button class="btn btn-success" title="{{ _('Add Question') }}" onclick="getModal({{ {'form_type': 'question', 'block_id': block.id} }})">
+                    <span class="glyphicon glyphicon-plus"></span>
+                    {{ _('Add Question') }}
+                </button>
+                <button class="btn btn-danger" title="{{ _('Remove Block') }}">
+                    <span class="glyphicon glyphicon-trash"></span>
+                    {{ _('Remove Block') }}
+                </button>
+            </div>
+        </div>
+    {% endfor %}
+    <div class="col-sm-12 text-right" style="margin-bottom: 30px;">
+        <button class="btn btn-success" title="{{ _('Add Block') }}" style="margin-top: 10px" onclick="getModal({{ {'form_type': 'block', 'quiz_id': quiz.id} }})">
+            <span class="glyphicon glyphicon-plus"></span>
+            {{ _('Add Block') }}
+        </button>
+    </div>
+
+{% endblock %}
+
+{% block tail %}
+    <div id="editor-form"></div>
+    {{ super() }}
+    <script>
+        function getModal(args) {
+            var args_str = "?";
+            for(var arg in args) {
+                if(args.hasOwnProperty(arg)) {
+                    args_str += `${arg}=${args[arg]}&`
+                }
+            }
+            const URL = `/form${args_str}`;
+            $('#editor-form').load(URL, function() {
+                $('#form-modal').modal('show');
+                $('textarea').wysihtml5();
+            });
+
+        }
+    </script>
+{% endblock %}

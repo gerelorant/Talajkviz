@@ -1,0 +1,15 @@
+<nav aria-label="navigation">
+    <ul class="pagination">
+        {% set block = questions[0].block %}
+        {% for question in questions %}
+            <li{% if not question.available %} class="disabled"{% endif %}><a href="{{ url_for('admin.quiz', quiz_id=block.quiz_id, block=block.order_number, question=question.order_number) }}">{{ question.order_number }}</a></li>
+        {% endfor %}
+    </ul>
+</nav>
+<div class="text-center">
+{% if finish %}
+    <a class="btn btn-primary" href="{{ url_for('admin.quiz', quiz_id=block.quiz.id, block=block.order_number, finish=True) }}" aria-label="Next">
+        {{ _('See Answers') }}
+    </a>
+{% endif %}
+</div>

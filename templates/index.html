@@ -1,0 +1,10 @@
+{% extends 'admin/master.html' %}
+
+{% block head %}
+    {{ super() }}
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+{% endblock %}
+
+{% block body %}
+    {% include '_quiz_list.html' %}
+{% endblock %}

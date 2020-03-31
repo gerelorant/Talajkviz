@@ -1,0 +1,10 @@
+pytz
+Flask
+Flask-Admin
+Flask-Bootstrap
+Flask-Migrate
+Flask-SQLAlchemy
+Flask-Security
+Flask-WTF
+WTForms
+python-Levenshtein

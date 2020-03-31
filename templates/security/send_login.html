@@ -1,0 +1,11 @@
+{% extends "security/base.html" %}
+
+{% set title =  _('Send Login')  %}
+{% set form =  send_login_form  %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block form %}
+    <h3>{{ title }}</h3>
+    {{ quick_form(form) }}
+{% endblock %}

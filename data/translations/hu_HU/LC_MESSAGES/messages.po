@@ -1,0 +1,105 @@
+# Hungarian (Hungary) translations for PROJECT.
+# Copyright (C) 2020 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2020-03-29 13:58+0200\n"
+"PO-Revision-Date: 2020-03-29 13:59+0200\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: hu_HU\n"
+"Language-Team: hu_HU <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.8.0\n"
+
+#: admin.py:229
+msgid "There are no items in the table."
+msgstr "Üres táblázat."
+
+#: admin.py:232
+msgid "Quizzes"
+msgstr "Kvízek"
+
+#: admin.py:232 admin.py:249 admin.py:257 admin.py:265
+msgid "Editor"
+msgstr "Szerkesztő"
+
+#: admin.py:249
+msgid "Block"
+msgstr "Blokk"
+
+#: admin.py:257
+msgid "Question"
+msgstr "Kérdés"
+
+#: admin.py:265
+msgid "Choices"
+msgstr "Válaszlehetőségek"
+
+#: admin.py:273
+msgid "Answers"
+msgstr "Válaszok"
+
+#: admin.py:273
+msgid "Check"
+msgstr "Ellenőrzés"
+
+#: app.py:26
+msgid "Username or e-mail"
+msgstr "Felhasználónév vagy e-mail cím"
+
+#: app.py:27
+msgid "Password"
+msgstr "Jelszó"
+
+#: app.py:28
+msgid "Log in"
+msgstr "Bejelentkezés"
+
+#: form.py:47 form.py:55 form.py:62
+msgid "Answer"
+msgstr "Válasz"
+
+#: form.py:52 form.py:59 form.py:65
+msgid "Save"
+msgstr "Mentés"
+
+#: templates/_quiz_list.html:21
+msgid "Start"
+msgstr "Kezdés"
+
+#: templates/_quiz_list.html:25
+msgid "Edit"
+msgstr "Szerkesztés"
+
+#: templates/_quiz_list.html:37
+msgid "No quizzes submitted yet."
+msgstr "Nincs még feltöltött kvíz."
+
+#: templates/navbar.html:33
+msgid "Logout"
+msgstr "Kijelentkezés"
+
+#: templates/navbar.html:39
+msgid "Login"
+msgstr "Bejelentkezés"
+
+#: templates/quiz.html:16
+#, python-format
+msgid "Question %(num)s"
+msgstr "%(num)s. kérdés"
+
+#: templates/quiz.html:32
+msgid "Next Block"
+msgstr "Következő blokk"
+
+#: templates/quiz.html:34
+msgid "Finish"
+msgstr "Befejezés"
+

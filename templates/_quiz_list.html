@@ -1,0 +1,38 @@
+{% import "admin/lib.html" as lib with context %}
+{% from "bootstrap/pagination.html" import render_pagination %}
+
+{% for quiz in quizzes.items%}
+    <div class="well quiz-card">
+        <h4>
+            {{ quiz.name }}
+        </h4>
+        <h6>
+            {{ quiz.start_time }}
+        </h6>
+        {% if quiz.description %}
+            {% if '<script>' in quiz.description %}
+                <p class="quiz-description">{{ quiz.description }}</p>
+            {% else %}
+                <p class="quiz-description">{{ quiz.description|safe }}</p>
+            {% endif %}
+        {% endif %}
+        <div class="quiz-buttons">
+            <a class="btn btn-sm btn-success" href="{{ url_for('admin.quiz', quiz_id=quiz.id) }}" >
+                {{ _("Start") }}
+            </a>
+            {% if quiz.host_id == current_user.id %}
+            <a class="btn btn-sm btn-primary" href="{{ url_for('quiz.edit_view', id=quiz.id) }}" >
+                {{ _("Edit") }}
+            </a>
+            {% endif %}
+        </div>
+    </div>
+{% endfor %}
+
+{% if quizzes.items|length %}
+    <div class="pager">
+        {{ render_pagination(quizzes, prev=None, next=None, ellipses='...') }}
+    </div>
+{% else %}
+    <p>{{ _('No quizzes submitted yet.') }}</p>
+{% endif %}

@@ -1,0 +1,45 @@
+{% extends 'admin/master.html' %}
+{% import 'admin/lib.html' as lib with context%}
+{% from "bootstrap/wtf.html" import quick_form %}
+{% from "bootstrap/pagination.html" import render_pagination %}
+
+
+{% block head %}
+    {{ super() }}
+    {{ lib.form_css() }}
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+{% endblock %}
+
+{% block body %}
+    <div class="well form-container">
+        <h3 class="block-title">{{ form.question.block.name }}</h3>
+        <h5 class="question-title">{{ _('Question %(num)s', num=form.question.order_number) }}</h5>
+    {% set content = form.question.content %}
+        {% if '<script>' in content %}
+            <p class="quiz-content">{{ content }}</p>
+        {% else %}
+            <div class="quiz-content">{{ content|safe }}</div>
+        {% endif %}
+        <div class="form-body">
+            {{ quick_form(form, button_map={'submit': 'success'}) }}
+        </div>
+    </div>
+    <div id='pager' class="pager">
+    </div>
+
+{% endblock %}
+
+
+{% block tail %}
+    {{ super() }}
+    {{ lib.form_js() }}
+    <script>
+        function loadPager() {
+            $('#pager').load('{{ url_for('admin.pager', quiz_id=form.question.block.quiz_id) }}', function() {
+                setTimeout(loadPager, 1000)
+            });
+        }
+
+        loadPager();
+    </script>
+{% endblock %}

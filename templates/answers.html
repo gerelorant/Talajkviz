@@ -1,0 +1,78 @@
+{% extends 'admin/master.html' %}
+{% import 'admin/lib.html' as lib with context%}
+{% from "bootstrap/wtf.html" import quick_form %}
+{% from "bootstrap/pagination.html" import render_pagination %}
+
+
+{% block head %}
+    {{ super() }}
+    {{ lib.form_css() }}
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+{% endblock %}
+
+{% block body %}
+    <h1>{{ block.order_number }}. {{ block.name }}</h1>
+    <div class="row">
+        <div class="col-md-6 text-left">
+            <h3>{{ _('Block') }}: {{ block_points }} / {{ answers.count() }}</h3>
+        </div>
+        <div class="col-md-6 text-right">
+            <h3>{{ _('Total') }}: {{ total }}</h3>
+        </div>
+        <div class="col-md-6 text-left">
+            {% if block.has_prev %}
+                <a class="btn btn-primary" href="{{ url_for('admin.quiz', quiz_id=block.quiz_id, block=block.order_number - 1) }}">{{ _('Previous') }}</a>
+            {% endif %}
+        </div>
+        <div class="col-md-6 text-right">
+            {% if block.has_next %}
+                <a class="btn btn-success" href="{{ url_for('admin.quiz', quiz_id=block.quiz_id, block=block.order_number + 1) }}">{{ _('Next') }}</a>
+            {% endif %}
+        </div>
+        <div class="col-md-12">
+
+            <h4>{{ _('Answers') }}</h4>
+            {% for answer in answers %}
+                <div class="well form-container">
+                    <h3 class="block-title">{{ answer.question.block.name }}</h3>
+                    <h5 class="question-title">{{ _('Question %(num)s', num=answer.question.order_number) }}</h5>
+                {% set content = answer.question.content %}
+                    {% if '<script>' in content %}
+                        <p class="quiz-content">{{ content }}</p>
+                    {% else %}
+                        <div class="quiz-content">{{ content|safe }}</div>
+                    {% endif %}
+                    <div class="form-body">
+                        <p>{{ _('Answer') }}:</p>
+                        <h2 class="{% if answer.points > 0 %}answer-good{% else %}answer-bad{% endif %}">
+                            <span class="glyphicon glyphicon-{% if answer.points > 0 %}ok{% else %}remove{% endif %}"></span>
+                            {{ answer.value }}
+                            ({{ _('%(points)s points', points=answer.points) }})
+                        </h2>
+                        <p>{{ _('Correct') }}:</p>
+                        <h5>{% for choice in answer.question.choices if choice.points > 0 %}{{ choice.value }}<br>{% endfor %}</h5>
+                    </div>
+                </div>
+            {% endfor %}
+
+        </div>
+        <div class="col-md-6 text-left">
+            {% if block.has_prev %}
+                <a class="btn btn-primary" href="{{ url_for('admin.quiz', quiz_id=block.quiz_id, block=block.order_number - 1) }}">{{ _('Previous') }}</a>
+            {% endif %}
+        </div>
+        <div class="col-md-6 text-right">
+            {% if block.has_next %}
+                <a class="btn btn-success" href="{{ url_for('admin.quiz', quiz_id=block.quiz_id, block=block.order_number + 1) }}">{{ _('Next') }}</a>
+            {% endif %}
+        </div>
+        <div class="col-md-12" style="margin-bottom: 30px;"></div>
+    </div>
+
+{% endblock %}
+
+
+{% block tail %}
+    {{ super() }}
+    {{ lib.form_js() }}
+{% endblock %}

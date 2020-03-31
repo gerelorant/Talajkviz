@@ -1,0 +1,21 @@
+{% extends "bootstrap/base.html" %}
+{% from 'bootstrap/wtf.html' import quick_form %}
+{% from 'admin/layout.html' import messages %}
+
+{% block styles %}
+    {{ super() }}
+    <link href="{{ url_for('static', filename='css/theme.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+    <div class="container" style="max-width: 540px">
+        {{ messages() }}
+        <h1>Talajkvíz</h1>
+        {% block form %}
+        {% endblock %}
+    </div>
+
+    {% include "security/_menu.html" %}
+
+{% endblock %}
