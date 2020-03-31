@@ -8,7 +8,7 @@
         <h4 class="modal-title">{{ _('Edit') }}</h4>
       </div>
       <div class="modal-body" style="padding-bottom: 45px;">
-        {{ quick_form(form, action=url_for('admin.form', **request.args), button_map={'submit': 'success pull-right'}) }}
+        {{ quick_form(form, action=url_for('admin.form', **request.args), button_map={'submit': 'success pull-right', 'delete': 'danger pull-right'}) }}
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->

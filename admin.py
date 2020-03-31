@@ -12,7 +12,7 @@ import sqlalchemy as sa
 import wtforms as wtf
 
 import model
-from form import QuestionForm, QuizForm, \
+from form import QuestionForm, \
     QuizEditorForm, BlockEditorForm, QuestionEditorForm, ChoiceEditorForm
 
 
@@ -27,7 +27,7 @@ class IndexView(AdminIndexView):
 
         return self.render('index.html', quizzes=quizzes)
 
-    @expose('/form', methods=['GET', 'POST'])
+    @expose('/form', methods=['GET', 'POST', 'DELETE'])
     @login_required
     def form(self):
         form_type = request.args.get('form_type')
@@ -61,14 +61,17 @@ class IndexView(AdminIndexView):
         if request.method == 'GET':
             form.load_model()
             return self.render('_editor_form.html', form=form)
-        elif request.method == 'DELETE':
-            model.db.session.delete(form.model)
         elif form.validate_on_submit():
-            form.save_model()
-            if form.model.id is None:
-                model.db.session.add(form.model)
-            model.db.session.commit()
-            flash(_('Successful edit!'))
+            if form.delete.data:
+                model.db.session.delete(form.model)
+                model.db.session.commit()
+                flash(_('Successful delete!'))
+            else:
+                form.save_model()
+                if form.model.id is None:
+                    model.db.session.add(form.model)
+                model.db.session.commit()
+                flash(_('Successful edit!'))
         else:
             flash(_('Validation error!'))
 

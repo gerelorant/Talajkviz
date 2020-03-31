@@ -135,192 +135,6 @@ class QuestionForm(FlaskForm):
         model.db.session.commit()
 
 
-class QuizForm(FlaskForm):
-    quiz: model.Quiz = None
-    name = wtf.StringField(
-        _l('Name'),
-        validators=[wtf.validators.DataRequired()]
-    )
-    start_time = DateTimeField(
-        _l('Start Time'),
-    )
-
-    @classmethod
-    def from_model(
-            cls,
-            quiz: model.Quiz,
-            *args,
-            **kwargs):
-        class Form(cls):
-            pass
-
-        def block_fields(form, block=None):
-            block_id = block.id if block else 'new'
-            name = block.name if block else None
-            order_number = block.order_number if block else None
-            check_time = block.check_time if block else None
-
-            setattr(form, f'block_{block_id}_block_order', wtf.IntegerField(
-                _l('Block Number'),
-                default=order_number,
-                render_kw={"columns": ('md', 2, 1)}
-            ))
-
-            setattr(form, f'block_{block_id}_name', wtf.StringField(
-                _l('Block Name'),
-                default=name,
-                render_kw={"columns": ('md', 2, 2)}
-            ))
-
-            setattr(form, f'block_{block_id}_check_time', wtf.IntegerField(
-                _l('Block Check Time'),
-                default=check_time,
-                render_kw={"columns": ('md', 2, 1)}
-            ))
-
-            if block is None:
-                setattr(Form, f'block_{block_id}_add',
-                        wtf.SubmitField('plus'))
-            else:
-                setattr(Form, f'block_{block_id}_save',
-                        wtf.SubmitField('floppy-disk'))
-                setattr(Form, f'block_{block_id}_delete',
-                        wtf.SubmitField('trash'))
-
-        def question_fields(form, question=None, block=None):
-            question_id = question.id if question else 'new'
-            block_id = block.id if block else \
-                question.block.id if question else 'new'
-            setattr(
-                form,
-                f'question_{block_id}_{question_id}_order_number',
-                wtf.IntegerField(
-                    _l('Question Number'),
-                    default=question.order_number if question else None,
-                    render_kw={"columns": ('md', 2, 1)}
-                )
-            )
-            setattr(
-                Form,
-                f'question_{block_id}_{question_id}_time',
-                wtf.IntegerField(
-                    _l('Time'),
-                    default=question.time if question else None,
-                    render_kw={"columns": ('md', 1, 1)}
-                )
-            )
-            setattr(
-                form,
-                f'question_{block_id}_{question_id}_show_choices',
-                wtf.BooleanField(
-                    _l('Show Choices'),
-                    default=question.show_choices if question else None,
-                                        render_kw={"columns": ('md', 5, 1)}
-                )
-            )
-
-            if question is None:
-                setattr(
-                    Form,
-                    f'question_{block_id}_{question_id}_add',
-                    wtf.SubmitField('plus')
-                )
-            else:
-                setattr(
-                    Form,
-                    f'question_{block_id}_{question_id}_save',
-                    wtf.SubmitField('floppy-disk')
-                )
-                setattr(
-                    Form,
-                    f'question_{block_id}_{question_id}_delete',
-                    wtf.SubmitField('trash')
-                )
-
-            setattr(
-                form,
-                f'question_{block_id}_{question_id}_content',
-                wtf.TextAreaField(
-                    _l('Content'),
-                    default=question.content if question else None,
-                    render_kw={"columns": ('md', ' d-none ', 12)}
-                )
-            )
-
-        def choice_fields(form, choice=None, question=None, block=None):
-            choice_id = choice.id if choice else 'new'
-            question_id = question.id if question else \
-                choice.question_id if choice else 'new'
-            block_id = block.id if block else \
-                question.block.id if question else  \
-                choice.question.block.id if choice else 'new'
-            
-            setattr(
-                form,
-                f'choice_{block_id}_{question_id}_{choice_id}_value',
-                wtf.StringField(
-                    _l('Value'),
-                    default=choice.value if choice else None,
-                    render_kw={"columns": ('md', 1, 3)}
-                )
-            )
-            setattr(
-                form,
-                f'choice_{block_id}_{question_id}_{choice_id}_points',
-                wtf.FloatField(
-                    _l('Points'),
-                    default=choice.points if choice else None,
-                    render_kw={"columns": ('md', 2, 1)}
-                )
-            ),
-            setattr(
-                form,
-                f'choice_{block_id}_{question_id}_{choice_id}_flexibility',
-                wtf.IntegerField(
-                    _l('Flexibility'),
-                    default=choice.max_levenshtein_distance if choice else None,
-                    render_kw={"columns": ('md', 2, 1)}
-                )
-            )
-
-            if choice is None:
-                setattr(
-                    Form,
-                    f'choice_{block_id}_{question_id}_{choice_id}_add',
-                    wtf.SubmitField('plus')
-                )
-            else:
-                setattr(
-                    Form,
-                    f'choice_{block_id}_{question_id}_{choice_id}_save',
-                    wtf.SubmitField('floppy-disk')
-                )
-                setattr(
-                    Form,
-                    f'choice_{block_id}_{question_id}_{choice_id}_delete',
-                    wtf.SubmitField('trash')
-                )
-
-        blocks = quiz.blocks if quiz is not None else []
-        for block in blocks:
-            block_fields(Form, block)
-            for question in block.questions:
-                question_fields(Form, question)
-                for choice in question.choices:
-                    choice_fields(Form, choice)
-                choice_fields(Form, question=question)
-            question_fields(Form, block=block)
-        block_fields(Form)
-
-        return Form(quiz, *args, **kwargs)
-
-    def __init__(self, quiz: model.Quiz, *args, **kwargs):
-        self.quiz = quiz
-        super().__init__(*args, **kwargs)
-        self.name.data = quiz.name if quiz else None
-        self.start_time.data = quiz.start_time if quiz else None
-
-
 class EditorForm(FlaskForm):
     def __init__(self, m: model.db.Model, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -349,6 +163,7 @@ class QuizEditorForm(EditorForm):
         _l('Start Time'),
         validators=[wtf.validators.Optional()])
     submit = wtf.SubmitField(_l('Save'), render_kw={'class_':'btn btn-success'})
+    delete = wtf.SubmitField(_l('Remove'), render_kw={'class_':'btn btn-danger'})
 
     def __init__(self, quiz: model.Quiz = None, *args, **kwargs):
         if quiz is None:
@@ -368,6 +183,7 @@ class BlockEditorForm(EditorForm):
         default=120,
         validators=[wtf.validators.DataRequired()])
     submit = wtf.SubmitField(_l('Save'), render_kw={'class_':'btn btn-success'})
+    delete = wtf.SubmitField(_l('Remove'), render_kw={'class_':'btn btn-danger'})
 
     def __init__(
             self,
@@ -405,6 +221,7 @@ class QuestionEditorForm(EditorForm):
     content = wtf.TextAreaField()
 
     submit = wtf.SubmitField(_l('Save'), render_kw={'class_':'btn btn-success'})
+    delete = wtf.SubmitField(_l('Remove'), render_kw={'class_':'btn btn-danger'})
 
     def __init__(
             self,
@@ -444,6 +261,7 @@ class ChoiceEditorForm(EditorForm):
         validators=[wtf.validators.NumberRange(min=1, max=5)])
 
     submit = wtf.SubmitField(_l('Save'), render_kw={'class_':'btn btn-success'})
+    delete = wtf.SubmitField(_l('Remove'), render_kw={'class_':'btn btn-danger'})
 
     def __init__(
             self,

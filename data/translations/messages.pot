@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-03-29 13:58+0200\n"
+"POT-Creation-Date: 2020-03-31 12:42+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,88 +17,314 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.8.0\n"
 
-#: admin.py:229
+#: admin.py:68
+msgid "Successful delete!"
+msgstr ""
+
+#: admin.py:74
+msgid "Successful edit!"
+msgstr ""
+
+#: admin.py:76
+msgid "Validation error!"
+msgstr ""
+
+#: admin.py:329
 msgid "There are no items in the table."
 msgstr ""
 
-#: admin.py:232
+#: admin.py:332
 msgid "Quizzes"
 msgstr ""
 
-#: admin.py:232 admin.py:249 admin.py:257 admin.py:265
-msgid "Editor"
+#: admin.py:361
+msgid "Filled Quizzes"
 msgstr ""
 
-#: admin.py:249
-msgid "Block"
-msgstr ""
-
-#: admin.py:257
-msgid "Question"
-msgstr ""
-
-#: admin.py:265
-msgid "Choices"
-msgstr ""
-
-#: admin.py:273
-msgid "Answers"
-msgstr ""
-
-#: admin.py:273
+#: admin.py:361 admin.py:379
 msgid "Check"
 msgstr ""
 
-#: app.py:26
-msgid "Username or e-mail"
+#: admin.py:368 admin.py:387
+msgid "User"
 msgstr ""
 
-#: app.py:27
-msgid "Password"
+#: admin.py:369
+msgid "Quiz"
 msgstr ""
 
-#: app.py:28
-msgid "Log in"
+#: admin.py:370 admin.py:389 form.py:255 templates/create.html:45
+#: templates/edit.html:45
+msgid "Points"
 msgstr ""
 
-#: form.py:47 form.py:55 form.py:62
+#: admin.py:379 templates/answers.html:34
+msgid "Answers"
+msgstr ""
+
+#: admin.py:386
+msgid "Question"
+msgstr ""
+
+#: admin.py:388 templates/answers.html:46 templates/create.html:45
+#: templates/edit.html:45
 msgid "Answer"
 msgstr ""
 
-#: form.py:52 form.py:59 form.py:65
+#: app.py:27
+msgid "Username or e-mail"
+msgstr ""
+
+#: app.py:28
+msgid "Password"
+msgstr ""
+
+#: app.py:29
+msgid "Log in"
+msgstr ""
+
+#: form.py:45 form.py:52 form.py:58 form.py:165 form.py:185 form.py:223
+#: form.py:263
 msgid "Save"
+msgstr ""
+
+#: form.py:160 form.py:179
+msgid "Name"
+msgstr ""
+
+#: form.py:163
+msgid "Start Time"
+msgstr ""
+
+#: form.py:166 form.py:186 form.py:224 form.py:264
+msgid "Remove"
+msgstr ""
+
+#: form.py:176 form.py:213
+msgid "Order Number"
+msgstr ""
+
+#: form.py:182
+msgid "Check Time"
+msgstr ""
+
+#: form.py:216
+msgid "Time"
+msgstr ""
+
+#: form.py:219
+msgid "Show Choices"
+msgstr ""
+
+#: form.py:252
+msgid "Value"
+msgstr ""
+
+#: form.py:259
+msgid "Flexibility (1-5)"
+msgstr ""
+
+#: templates/_editor_form.html:8 templates/_quiz_list.html:25
+#: templates/create.html:45 templates/edit.html:45
+msgid "Edit"
 msgstr ""
 
 #: templates/_quiz_list.html:21
 msgid "Start"
 msgstr ""
 
-#: templates/_quiz_list.html:25
-msgid "Edit"
-msgstr ""
-
 #: templates/_quiz_list.html:37
 msgid "No quizzes submitted yet."
+msgstr ""
+
+#: templates/answers.html:17
+msgid "Block"
+msgstr ""
+
+#: templates/answers.html:20
+msgid "Total"
+msgstr ""
+
+#: templates/answers.html:24 templates/answers.html:61
+msgid "Previous"
+msgstr ""
+
+#: templates/answers.html:29 templates/answers.html:66
+msgid "Next"
+msgstr ""
+
+#: templates/answers.html:38 templates/create.html:28 templates/edit.html:28
+#: templates/quiz.html:16
+#, python-format
+msgid "Question %(num)s"
+msgstr ""
+
+#: templates/answers.html:50
+#, python-format
+msgid "%(points)s points"
+msgstr ""
+
+#: templates/answers.html:52
+msgid "Correct"
+msgstr ""
+
+#: templates/create.html:7 templates/edit.html:7
+msgid "Edit Quiz"
+msgstr ""
+
+#: templates/create.html:18 templates/create.html:20 templates/edit.html:18
+#: templates/edit.html:20
+msgid "Edit Block"
+msgstr ""
+
+#: templates/create.html:31 templates/create.html:33 templates/edit.html:31
+#: templates/edit.html:33
+msgid "Edit Question"
+msgstr ""
+
+#: templates/create.html:45 templates/edit.html:45
+msgid "Flexibility"
+msgstr ""
+
+#: templates/create.html:48 templates/edit.html:48
+msgid "Edit Answer"
+msgstr ""
+
+#: templates/create.html:58 templates/create.html:60 templates/edit.html:58
+#: templates/edit.html:60
+msgid "Add Answer"
+msgstr ""
+
+#: templates/create.html:62 templates/create.html:64
+msgid "Remove Question"
+msgstr ""
+
+#: templates/create.html:70 templates/create.html:72 templates/edit.html:66
+#: templates/edit.html:68
+msgid "Add Question"
+msgstr ""
+
+#: templates/create.html:74 templates/create.html:76
+msgid "Remove Block"
+msgstr ""
+
+#: templates/create.html:82 templates/create.html:84 templates/edit.html:74
+#: templates/edit.html:76
+msgid "Add Block"
 msgstr ""
 
 #: templates/navbar.html:33
 msgid "Logout"
 msgstr ""
 
-#: templates/navbar.html:39
+#: templates/navbar.html:39 templates/security/_menu.html:4
+#: templates/security/login_user.html:3
 msgid "Login"
 msgstr ""
 
-#: templates/quiz.html:16
+#: templates/navbar.html:39 templates/security/_menu.html:6
+#: templates/security/register_user.html:3
+msgid "Register"
+msgstr ""
+
+#: templates/pager.html:12
+msgid "See Answers"
+msgstr ""
+
+#: templates/security/_menu.html:2
+msgid "Menu"
+msgstr ""
+
+#: templates/security/_menu.html:9
+msgid "Forgot password"
+msgstr ""
+
+#: templates/security/_menu.html:12
+msgid "Confirm account"
+msgstr ""
+
+#: templates/security/change_password.html:3
+msgid "Change Password"
+msgstr ""
+
+#: templates/security/forgot_password.html:3
+msgid "Forgot Password"
+msgstr ""
+
+#: templates/security/reset_password.html:3
+msgid "Reset Password"
+msgstr ""
+
+#: templates/security/send_confirmation.html:3
+msgid "Send Confirmation"
+msgstr ""
+
+#: templates/security/send_login.html:3
+msgid "Send Login"
+msgstr ""
+
+#: templates/security/email/change_notice.html:1
+msgid "Your password has been changed."
+msgstr ""
+
+#: templates/security/email/change_notice.html:3
+msgid "If you did not change your password,"
+msgstr ""
+
+#: templates/security/email/change_notice.html:3
+msgid "click here to reset it"
+msgstr ""
+
+#: templates/security/email/change_notice.txt:1
+msgid "Your password has been changed"
+msgstr ""
+
+#: templates/security/email/change_notice.txt:3
+msgid "If you did not change your password, click the link below to reset it."
+msgstr ""
+
+#: templates/security/email/confirmation_instructions.html:1
+#: templates/security/email/confirmation_instructions.txt:1
+msgid "Please confirm your email through the link below:"
+msgstr ""
+
+#: templates/security/email/confirmation_instructions.html:3
+#: templates/security/email/welcome.html:6
+msgid "Confirm my account"
+msgstr ""
+
+#: templates/security/email/login_instructions.html:1
+#: templates/security/email/login_instructions.txt:1
+#: templates/security/email/welcome.html:1
+#: templates/security/email/welcome.txt:1
 #, python-format
-msgid "Question %(num)s"
+msgid "Welcome %(email)s!"
 msgstr ""
 
-#: templates/quiz.html:32
-msgid "Next Block"
+#: templates/security/email/login_instructions.html:3
+#: templates/security/email/login_instructions.txt:3
+msgid "You can log into your account through the link below:"
 msgstr ""
 
-#: templates/quiz.html:34
-msgid "Finish"
+#: templates/security/email/login_instructions.html:5
+msgid "Login now"
+msgstr ""
+
+#: templates/security/email/reset_instructions.html:1
+msgid "Click here to reset your password"
+msgstr ""
+
+#: templates/security/email/reset_instructions.txt:1
+msgid "Click the link below to reset your password:"
+msgstr ""
+
+#: templates/security/email/reset_notice.html:1
+#: templates/security/email/reset_notice.txt:1
+msgid "Your password has been reset"
+msgstr ""
+
+#: templates/security/email/welcome.html:4
+#: templates/security/email/welcome.txt:4
+msgid "You can confirm your email through the link below:"
 msgstr ""
 

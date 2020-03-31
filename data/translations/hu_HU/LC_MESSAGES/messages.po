@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-03-29 13:58+0200\n"
+"POT-Creation-Date: 2020-03-31 12:42+0200\n"
 "PO-Revision-Date: 2020-03-29 13:59+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: hu_HU\n"
@@ -18,88 +18,343 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.8.0\n"
 
-#: admin.py:229
+#: admin.py:68
+msgid "Successful delete!"
+msgstr "Sikeres törlés!"
+
+#: admin.py:74
+msgid "Successful edit!"
+msgstr "Sikeres módosítás!"
+
+#: admin.py:76
+msgid "Validation error!"
+msgstr "Érvényesítési hiba!"
+
+#: admin.py:329
 msgid "There are no items in the table."
 msgstr "Üres táblázat."
 
-#: admin.py:232
+#: admin.py:332
 msgid "Quizzes"
 msgstr "Kvízek"
 
-#: admin.py:232 admin.py:249 admin.py:257 admin.py:265
-msgid "Editor"
-msgstr "Szerkesztő"
+#: admin.py:361
+msgid "Filled Quizzes"
+msgstr "Kitöltött kvízek"
 
-#: admin.py:249
-msgid "Block"
-msgstr "Blokk"
-
-#: admin.py:257
-msgid "Question"
-msgstr "Kérdés"
-
-#: admin.py:265
-msgid "Choices"
-msgstr "Válaszlehetőségek"
-
-#: admin.py:273
-msgid "Answers"
-msgstr "Válaszok"
-
-#: admin.py:273
+#: admin.py:361 admin.py:379
 msgid "Check"
 msgstr "Ellenőrzés"
 
-#: app.py:26
-msgid "Username or e-mail"
-msgstr "Felhasználónév vagy e-mail cím"
+#: admin.py:368 admin.py:387
+msgid "User"
+msgstr "Felhasználó"
 
-#: app.py:27
-msgid "Password"
-msgstr "Jelszó"
+#: admin.py:369
+msgid "Quiz"
+msgstr "Kvíz"
 
-#: app.py:28
-msgid "Log in"
-msgstr "Bejelentkezés"
+#: admin.py:370 admin.py:389 form.py:255 templates/create.html:45
+#: templates/edit.html:45
+msgid "Points"
+msgstr "Pontok"
 
-#: form.py:47 form.py:55 form.py:62
+#: admin.py:379 templates/answers.html:34
+msgid "Answers"
+msgstr "Válaszok"
+
+#: admin.py:386
+msgid "Question"
+msgstr "Kérdés"
+
+#: admin.py:388 templates/answers.html:46 templates/create.html:45
+#: templates/edit.html:45
 msgid "Answer"
 msgstr "Válasz"
 
-#: form.py:52 form.py:59 form.py:65
+#: app.py:27
+msgid "Username or e-mail"
+msgstr "Felhasználónév vagy e-mail cím"
+
+#: app.py:28
+msgid "Password"
+msgstr "Jelszó"
+
+#: app.py:29
+msgid "Log in"
+msgstr "Bejelentkezés"
+
+#: form.py:45 form.py:52 form.py:58 form.py:165 form.py:185 form.py:223
+#: form.py:263
 msgid "Save"
 msgstr "Mentés"
+
+#: form.py:160 form.py:179
+msgid "Name"
+msgstr "Név"
+
+#: form.py:163
+msgid "Start Time"
+msgstr "Kezdő idő"
+
+#: form.py:166 form.py:186 form.py:224 form.py:264
+msgid "Remove"
+msgstr "Törlés"
+
+#: form.py:176 form.py:213
+msgid "Order Number"
+msgstr "Sorszám"
+
+#: form.py:182
+msgid "Check Time"
+msgstr "Ellenőrzési idő"
+
+#: form.py:216
+msgid "Time"
+msgstr "Kitöltési idő"
+
+#: form.py:219
+msgid "Show Choices"
+msgstr "Válaszlehetőségek mutatása"
+
+#: form.py:252
+msgid "Value"
+msgstr "Érték"
+
+#: form.py:259
+msgid "Flexibility (1-5)"
+msgstr "Engedékenység (1-5)"
+
+#: templates/_editor_form.html:8 templates/_quiz_list.html:25
+#: templates/create.html:45 templates/edit.html:45
+msgid "Edit"
+msgstr "Szerkesztés"
 
 #: templates/_quiz_list.html:21
 msgid "Start"
 msgstr "Kezdés"
 
-#: templates/_quiz_list.html:25
-msgid "Edit"
-msgstr "Szerkesztés"
-
 #: templates/_quiz_list.html:37
 msgid "No quizzes submitted yet."
 msgstr "Nincs még feltöltött kvíz."
 
-#: templates/navbar.html:33
-msgid "Logout"
-msgstr "Kijelentkezés"
+#: templates/answers.html:17
+msgid "Block"
+msgstr "Blokk"
 
-#: templates/navbar.html:39
-msgid "Login"
-msgstr "Bejelentkezés"
+#: templates/answers.html:20
+msgid "Total"
+msgstr "Összesen"
 
+#: templates/answers.html:24 templates/answers.html:61
+msgid "Previous"
+msgstr "Előző"
+
+#: templates/answers.html:29 templates/answers.html:66
+msgid "Next"
+msgstr "Következő"
+
+#: templates/answers.html:38 templates/create.html:28 templates/edit.html:28
 #: templates/quiz.html:16
 #, python-format
 msgid "Question %(num)s"
 msgstr "%(num)s. kérdés"
 
-#: templates/quiz.html:32
-msgid "Next Block"
-msgstr "Következő blokk"
+#: templates/answers.html:50
+#, python-format
+msgid "%(points)s points"
+msgstr "pont"
 
-#: templates/quiz.html:34
-msgid "Finish"
-msgstr "Befejezés"
+#: templates/answers.html:52
+msgid "Correct"
+msgstr "Megfejtés"
+
+#: templates/create.html:7 templates/edit.html:7
+msgid "Edit Quiz"
+msgstr "Kvíz szerkesztő"
+
+#: templates/create.html:18 templates/create.html:20 templates/edit.html:18
+#: templates/edit.html:20
+msgid "Edit Block"
+msgstr "Blokk szerkesztő"
+
+#: templates/create.html:31 templates/create.html:33 templates/edit.html:31
+#: templates/edit.html:33
+msgid "Edit Question"
+msgstr "Kérdés szerkesztő"
+
+#: templates/create.html:45 templates/edit.html:45
+msgid "Flexibility"
+msgstr "Engedékenység"
+
+#: templates/create.html:48 templates/edit.html:48
+msgid "Edit Answer"
+msgstr "Válasz szerkesztő"
+
+#: templates/create.html:58 templates/create.html:60 templates/edit.html:58
+#: templates/edit.html:60
+msgid "Add Answer"
+msgstr "Válasz hozzáadása"
+
+#: templates/create.html:62 templates/create.html:64
+msgid "Remove Question"
+msgstr "Kérdés törlése"
+
+#: templates/create.html:70 templates/create.html:72 templates/edit.html:66
+#: templates/edit.html:68
+msgid "Add Question"
+msgstr "Kérdés hozzáadása"
+
+#: templates/create.html:74 templates/create.html:76
+msgid "Remove Block"
+msgstr "Blokk törlése"
+
+#: templates/create.html:82 templates/create.html:84 templates/edit.html:74
+#: templates/edit.html:76
+msgid "Add Block"
+msgstr "Blokk hozzáadása"
+
+#: templates/navbar.html:33
+msgid "Logout"
+msgstr "Kijelentkezés"
+
+#: templates/navbar.html:39 templates/security/_menu.html:4
+#: templates/security/login_user.html:3
+msgid "Login"
+msgstr "Bejelentkezés"
+
+#: templates/navbar.html:39 templates/security/_menu.html:6
+#: templates/security/register_user.html:3
+msgid "Register"
+msgstr "Regisztráció"
+
+#: templates/pager.html:12
+msgid "See Answers"
+msgstr "Megfejtések"
+
+#: templates/security/_menu.html:2
+msgid "Menu"
+msgstr "Menü"
+
+#: templates/security/_menu.html:9
+msgid "Forgot password"
+msgstr "Elfelejtett jelszó"
+
+#: templates/security/_menu.html:12
+msgid "Confirm account"
+msgstr "Fiók megerősítése"
+
+#: templates/security/change_password.html:3
+msgid "Change Password"
+msgstr "Jelszóváltás"
+
+#: templates/security/forgot_password.html:3
+msgid "Forgot Password"
+msgstr "Elfelejtett jelszó"
+
+#: templates/security/reset_password.html:3
+msgid "Reset Password"
+msgstr "Jelszó visszaállításs"
+
+#: templates/security/send_confirmation.html:3
+msgid "Send Confirmation"
+msgstr "Megerősítő adatok küldése"
+
+#: templates/security/send_login.html:3
+msgid "Send Login"
+msgstr "Bejelentkező adatok küldése"
+
+#: templates/security/email/change_notice.html:1
+msgid "Your password has been changed."
+msgstr "Jelszava megváltozott."
+
+#: templates/security/email/change_notice.html:3
+msgid "If you did not change your password,"
+msgstr "Ha nem változtatta meg jelszavát,"
+
+#: templates/security/email/change_notice.html:3
+msgid "click here to reset it"
+msgstr "kattintson ide a visszaállításhoz"
+
+#: templates/security/email/change_notice.txt:1
+msgid "Your password has been changed"
+msgstr "Jelszava megváltozott"
+
+#: templates/security/email/change_notice.txt:3
+msgid "If you did not change your password, click the link below to reset it."
+msgstr ""
+"Ha nem változtatta meg jelszavát, kattintson a lenti hivatkozásra a "
+"visszaállításhoz."
+
+#: templates/security/email/confirmation_instructions.html:1
+#: templates/security/email/confirmation_instructions.txt:1
+msgid "Please confirm your email through the link below:"
+msgstr ""
+
+#: templates/security/email/confirmation_instructions.html:3
+#: templates/security/email/welcome.html:6
+msgid "Confirm my account"
+msgstr ""
+
+#: templates/security/email/login_instructions.html:1
+#: templates/security/email/login_instructions.txt:1
+#: templates/security/email/welcome.html:1
+#: templates/security/email/welcome.txt:1
+#, python-format
+msgid "Welcome %(email)s!"
+msgstr ""
+
+#: templates/security/email/login_instructions.html:3
+#: templates/security/email/login_instructions.txt:3
+msgid "You can log into your account through the link below:"
+msgstr ""
+
+#: templates/security/email/login_instructions.html:5
+msgid "Login now"
+msgstr ""
+
+#: templates/security/email/reset_instructions.html:1
+msgid "Click here to reset your password"
+msgstr ""
+
+#: templates/security/email/reset_instructions.txt:1
+msgid "Click the link below to reset your password:"
+msgstr ""
+
+#: templates/security/email/reset_notice.html:1
+#: templates/security/email/reset_notice.txt:1
+msgid "Your password has been reset"
+msgstr ""
+
+#: templates/security/email/welcome.html:4
+#: templates/security/email/welcome.txt:4
+msgid "You can confirm your email through the link below:"
+msgstr ""
+
+#~ msgid "Editor"
+#~ msgstr "Szerkesztő"
+
+#~ msgid "Choices"
+#~ msgstr "Válaszlehetőségek"
+
+#~ msgid "Next Block"
+#~ msgstr "Következő blokk"
+
+#~ msgid "Finish"
+#~ msgstr "Befejezés"
+
+#~ msgid "Block Number"
+#~ msgstr "Blokk száma"
+
+#~ msgid "Block Name"
+#~ msgstr "Blokk neve"
+
+#~ msgid "Block Check Time"
+#~ msgstr "Blokk ellenőrző ideje"
+
+#~ msgid "Question Number"
+#~ msgstr "Kérdés száma"
+
+#~ msgid "Content"
+#~ msgstr "Tartalom"
 
