@@ -80,7 +80,7 @@ class IndexView(AdminIndexView):
 
     @expose('/<int:quiz_id>/pager')
     def pager(self, quiz_id: int):
-        active = request.get('active', 1, type=int)
+        active = request.args.get('active', 1, type=int)
         quiz = model.Quiz.query.get(quiz_id)
         if quiz is None:
             return abort(404)
