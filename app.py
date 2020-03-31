@@ -49,7 +49,7 @@ babel.translation_directories = app.config.get("BABEL_TRANSLATIONS")
 @babel.localeselector
 def get_locale():
     if current_user.is_authenticated:
-        return current_user.language
+        return current_user.language or 'hu'
     return request.accept_languages.best_match(app.config.get('LANGUAGES'))
 
 
