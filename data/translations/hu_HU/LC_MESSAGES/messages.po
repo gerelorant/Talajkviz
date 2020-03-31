@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-03-31 12:42+0200\n"
+"POT-Creation-Date: 2020-03-31 13:18+0200\n"
 "PO-Revision-Date: 2020-03-29 13:59+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: hu_HU\n"
@@ -30,44 +30,44 @@ msgstr "Sikeres módosítás!"
 msgid "Validation error!"
 msgstr "Érvényesítési hiba!"
 
-#: admin.py:329
+#: admin.py:332
 msgid "There are no items in the table."
 msgstr "Üres táblázat."
 
-#: admin.py:332
+#: admin.py:335
 msgid "Quizzes"
 msgstr "Kvízek"
 
-#: admin.py:361
+#: admin.py:364
 msgid "Filled Quizzes"
 msgstr "Kitöltött kvízek"
 
-#: admin.py:361 admin.py:379
+#: admin.py:364 admin.py:382
 msgid "Check"
 msgstr "Ellenőrzés"
 
-#: admin.py:368 admin.py:387
+#: admin.py:371 admin.py:390
 msgid "User"
 msgstr "Felhasználó"
 
-#: admin.py:369
+#: admin.py:372
 msgid "Quiz"
 msgstr "Kvíz"
 
-#: admin.py:370 admin.py:389 form.py:255 templates/create.html:45
+#: admin.py:373 admin.py:392 form.py:255 templates/create.html:45
 #: templates/edit.html:45
 msgid "Points"
 msgstr "Pontok"
 
-#: admin.py:379 templates/answers.html:34
+#: admin.py:382 templates/answers.html:36
 msgid "Answers"
 msgstr "Válaszok"
 
-#: admin.py:386
+#: admin.py:389
 msgid "Question"
 msgstr "Kérdés"
 
-#: admin.py:388 templates/answers.html:46 templates/create.html:45
+#: admin.py:391 templates/answers.html:48 templates/create.html:45
 #: templates/edit.html:45
 msgid "Answer"
 msgstr "Válasz"
@@ -146,26 +146,30 @@ msgstr "Blokk"
 msgid "Total"
 msgstr "Összesen"
 
-#: templates/answers.html:24 templates/answers.html:61
+#: templates/answers.html:24 templates/answers.html:63
 msgid "Previous"
 msgstr "Előző"
 
-#: templates/answers.html:29 templates/answers.html:66
+#: templates/answers.html:29 templates/answers.html:68
 msgid "Next"
 msgstr "Következő"
 
-#: templates/answers.html:38 templates/create.html:28 templates/edit.html:28
+#: templates/answers.html:31 templates/answers.html:70
+msgid "Finish"
+msgstr "Befejezés"
+
+#: templates/answers.html:40 templates/create.html:28 templates/edit.html:28
 #: templates/quiz.html:16
 #, python-format
 msgid "Question %(num)s"
 msgstr "%(num)s. kérdés"
 
-#: templates/answers.html:50
+#: templates/answers.html:52
 #, python-format
 msgid "%(points)s points"
 msgstr "pont"
 
-#: templates/answers.html:52
+#: templates/answers.html:54
 msgid "Correct"
 msgstr "Megfejtés"
 

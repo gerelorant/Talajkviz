@@ -27,6 +27,8 @@
         <div class="col-md-6 text-right">
             {% if block.has_next %}
                 <a class="btn btn-success" href="{{ url_for('admin.quiz', quiz_id=block.quiz_id, block=block.order_number + 1) }}">{{ _('Next') }}</a>
+            {% else %}
+                <a class="btn btn-primary" href="{{ url_for('admin.index') }}">{{ _('Finish') }}</a>
             {% endif %}
         </div>
         <div class="col-md-12">
@@ -64,6 +66,8 @@
         <div class="col-md-6 text-right">
             {% if block.has_next %}
                 <a class="btn btn-success" href="{{ url_for('admin.quiz', quiz_id=block.quiz_id, block=block.order_number + 1) }}">{{ _('Next') }}</a>
+            {% else %}
+                <a class="btn btn-primary" href="{{ url_for('admin.index') }}">{{ _('Finish') }}</a>
             {% endif %}
         </div>
         <div class="col-md-12" style="margin-bottom: 30px;"></div>
