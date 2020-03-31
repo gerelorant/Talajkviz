@@ -7,7 +7,7 @@
             {{ quiz.name }}
         </h4>
         <h6>
-            {{ quiz.start_time }}
+            {{ quiz.start_time or "" }}
         </h6>
         {% if quiz.description %}
             {% if '<script>' in quiz.description %}
