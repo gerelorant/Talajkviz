@@ -35,7 +35,7 @@
     {{ lib.form_js() }}
     <script>
         function loadPager() {
-            $('#pager').load('{{ url_for('admin.pager', quiz_id=form.question.block.quiz_id) }}', function() {
+            $('#pager').load('{{ url_for('admin.pager', quiz_id=form.question.block.quiz_id, active=form.question.order_number) }}', function() {
                 setTimeout(loadPager, 1000)
             });
         }

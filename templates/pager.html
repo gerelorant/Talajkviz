@@ -2,7 +2,7 @@
     <ul class="pagination">
         {% set block = questions[0].block %}
         {% for question in questions %}
-            <li{% if not question.available %} class="disabled"{% endif %}><a href="{{ url_for('admin.quiz', quiz_id=block.quiz_id, block=block.order_number, question=question.order_number) }}">{{ question.order_number }}</a></li>
+            <li{% if not question.available %} class="disabled"{% elif question.order_number == active %} class="active"{% endif %}><a href="{{ url_for('admin.quiz', quiz_id=block.quiz_id, block=block.order_number, question=question.order_number) }}">{{ question.order_number }}</a></li>
         {% endfor %}
     </ul>
 </nav>
